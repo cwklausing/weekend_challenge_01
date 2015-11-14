@@ -5,13 +5,22 @@ $(function() {
 		console.log(submission);
 
 		var $ul = $('<ul>');
-		$ul.addClass('entry').appendTo('.display');
+		$ul.text('Employee Review');
+		$('section').append($ul);
 
 		for (var i = 0; i < submission.length; i++) {
-			var elem = submission[i];
+			var elem = submission[i].value;
 			var $li = $('<li>');
 			$li.text(elem);
-			$('ul').closest().append($li);
+			$('ul:last').append($li);
 		}
+		$button = $('<button>');
+		$button.text('Remove');
+		$('ul:last').append($button);
 	})
+
+	// $('section').on('click', 'button' function(e) {
+	// 	event.preventDefault();
+	// 	$(this).closest("ul").detach();
+	// };
 });
