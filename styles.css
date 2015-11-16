@@ -1,6 +1,35 @@
+body {
+	background-color: #cce5ff;
+	font-family: 'Merriweather', serif;;
+}
+
+.center {
+	background-color: white;
+	width: 800px;
+	height: 650px;
+	padding: 10px;
+	margin: 0 auto;
+	border: 2px solid black;
+	border-radius: 10px;
+}
+
+h2, p {
+	text-align: center;
+}
+
+h2 {
+	font-size: 2em;
+}
+
 form {
-	width: 150px;
+	width: 200px;
+	height: 470px;
+	padding: 20px;
+	padding-right: 100px;
+	margin: 0 20px 20px 75px;
 	display: inline;
+	float: left;
+	border-right: 2px dotted;
 }
 
 form input {
@@ -11,6 +40,33 @@ form input {
 }
 
 section {
-	display: inline;
-	width: 400px;
+	padding-left: 15px;
+	width: 270px;
+	height: 500px;
+	overflow: scroll;
+}
+
+ul, li {
+	list-style: none;
+	width: inherit;
+}
+
+.rating0, .rating1 {
+	background-color: #ff0000;
+}
+
+.rating2 {
+	background-color: #ff6600;
+}
+
+.rating3 {
+	background-color: #ffff80;
+}
+
+.rating4 {
+	background-color: #ccff66;
+}
+
+.rating5 {
+	background-color: #00cc00;
 }
