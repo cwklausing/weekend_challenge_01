@@ -59,9 +59,7 @@ $(function() {
 		// 	};			
 		// };
 		//If button in section is clicked, remove the <ul> closest to button
-	$('section').on('click', 'button', function() {
-		$(this).closest('ul').remove();
-		});
+	
 	
 	//Pass submitted data to template
 	var compiledHtml = template({employees: list});
@@ -69,6 +67,10 @@ $(function() {
 	$(".employeeDisplay").html(compiledHtml);
 	
 	});
+	
+	$('section').on('click', 'button', function() {
+		$(this).closest('ul').remove();
+		});
 });
 
 
