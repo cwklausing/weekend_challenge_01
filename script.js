@@ -10,29 +10,12 @@ function Employee(firstName, lastName, empNumber, empTitle, reviewScore, salary)
 
 //list for storing employees
 var list = [];
-	
-//Antoinette's example had this--but do I need it?	
-function renderProfile(employeeList) {
-	//passed data to template
-	var compiledHtml = template({employees: employeeList});
-	//Why slice?
-	this.getList = function() {
-		return list.slice(0);
-	};
-	this.addEmployee = function(employee) {
-		list.push(employee)
-	};
-};
-
-	
-	//Compiling template
-	var template = Handlebars.compile($('#employee-list').html());
-	//Pass submitted data to template
-	var compiledHtml = template({employees: list});
-	//Adding html to page
-	$(".employeeDisplay").append(compiledHtml);
 
 $(function() {
+
+	//Compiling template
+	var template = Handlebars.compile($('#employee-list').html());
+	
 	$('form').on('submit', function(event) {
 		
 		event.preventDefault();
@@ -45,10 +28,8 @@ $(function() {
 		var salary = $('#salary').val();
 
 		//push submitted employee to the 'list'
-		list.addEmployee(new Employee(firstName, lastName, empNumber, empTitle, reviewScore, salary));
-
-		renderProfile(list.getList());
-		
+		list.push(new Employee(firstName, lastName, empNumber, empTitle, reviewScore, salary));
+		console.log(list);
 		/*Color-coding functino for ratings*/
 		// for (var i = 0; i < list.length; i++) {
 		// 	var elem2 = list[i].name;
@@ -81,6 +62,11 @@ $(function() {
 	$('section').on('click', 'button', function() {
 		$(this).closest('ul').remove();
 		});
+	
+	//Pass submitted data to template
+	var compiledHtml = template({employees: list});
+	//Adding html to page
+	$(".employeeDisplay").html(compiledHtml);
 	
 	});
 });
