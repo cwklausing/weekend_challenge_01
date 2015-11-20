@@ -1,3 +1,4 @@
+//Employee constructor
 function Employee(firstName, lastName, empNumber, empTitle, reviewScore, salary) {
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -10,21 +11,24 @@ function Employee(firstName, lastName, empNumber, empTitle, reviewScore, salary)
 //list for storing employees
 var list = [];
 	
-	//Rendering functions
-	
+//Antoinette's example had this--but do I need it?	
 function renderProfile(employeeList) {
+	//passed data to template
 	var compiledHtml = template({employees: employeeList});
-}
+	//Why slice?
+	this.getList = function() {
+		return list.slice(0);
+	};
+	this.addEmployee = function(employee) {
+		list.push(employee)
+	};
+};
 
-	//If button in section is clicked, remove the <ul> closest to button
-	$('section').on('click', 'button', function() {
-		$(this).closest('ul').remove();
-
+	
 	//Compiling template
 	var template = Handlebars.compile($('#employee-list').html());
-	renderProfile(list.getList());
 	//Pass submitted data to template
-	var compiledHtml = template({employees: list.getList()});
+	var compiledHtml = template({employees: list});
 	//Adding html to page
 	$(".employeeDisplay").append(compiledHtml);
 
@@ -41,7 +45,7 @@ $(function() {
 		var salary = $('#salary').val();
 
 		//push submitted employee to the 'list'
-		list.push(new Employee(firstName, lastName, empNumber, empTitle reviewScore, salary));
+		list.addEmployee(new Employee(firstName, lastName, empNumber, empTitle, reviewScore, salary));
 
 		renderProfile(list.getList());
 		
@@ -53,7 +57,7 @@ $(function() {
 		// 		case '0':
 		// 			$li.addClass("rating0");
 		// 			break;
-		// 		case '1':
+		// 	a	case '1':
 		// 			$li.addClass("rating1");
 		// 			break;
 		// 		case '2':
@@ -73,13 +77,13 @@ $(function() {
 		// 		}
 		// 	};			
 		// };
-
-	});
-
-	//Employee constructor
-	
+		//If button in section is clicked, remove the <ul> closest to button
+	$('section').on('click', 'button', function() {
+		$(this).closest('ul').remove();
+		});
 	
 	});
 });
+
 
 
