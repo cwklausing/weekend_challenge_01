@@ -38,7 +38,9 @@ form input {
 	padding: 5px;
 	margin: 5px;
 }
-
+section h3 {
+	text-align: center;
+}
 section {
 	padding-left: 15px;
 	width: 270px;

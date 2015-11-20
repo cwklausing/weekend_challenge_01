@@ -1,12 +1,53 @@
-$(function() {
-	$('form').on('submit', function(e) {
-		var submission = $(this).serializeArray();
-		event.preventDefault();
-		console.log(submission);
+function Employee(firstName, lastName, empNumber, empTitle, reviewScore, salary) {
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.empNumber = empNumber;
+		this.empTitle = empTitle;
+		this.reviewScore = reviewScore;
+		this.salary = salary;
+	}
 
+//list for storing employees
+var list = [];
+	
+	//Rendering functions
+	
+function renderProfile(employeeList) {
+	var compiledHtml = template({employees: employeeList});
+}
+
+	//If button in section is clicked, remove the <ul> closest to button
+	$('section').on('click', 'button', function() {
+		$(this).closest('ul').remove();
+
+	//Compiling template
+	var template = Handlebars.compile($('#employee-list').html());
+	renderProfile(list.getList());
+	//Pass submitted data to template
+	var compiledHtml = template({employees: list.getList()});
+	//Adding html to page
+	$(".employeeDisplay").append(compiledHtml);
+
+$(function() {
+	$('form').on('submit', function(event) {
+		
+		event.preventDefault();
+
+		var firstName = $('#firstName').val();
+		var lastName = $('#lastName').val();
+		var empNumber = $('#empNumber').val();
+		var empTitle = $('#empTitle').val();
+		var reviewScore = $('#reviewScore').val();
+		var salary = $('#salary').val();
+
+		//push submitted employee to the 'list'
+		list.push(new Employee(firstName, lastName, empNumber, empTitle reviewScore, salary));
+
+		renderProfile(list.getList());
+		
 		/*Color-coding functino for ratings*/
-		// for (var i = 0; i < submission.length; i++) {
-		// 	var elem2 = submission[i].name;
+		// for (var i = 0; i < list.length; i++) {
+		// 	var elem2 = list[i].name;
 		// 	if (elem2 === 'Review Score') {
 		// 	switch (elem) {
 		// 		case '0':
@@ -35,17 +76,9 @@ $(function() {
 
 	});
 
-	$('section').on('click', 'button', function() {
-		$(this).closest('ul').remove();
-
-	//Creating template for displaying new employees
-	var employeeDisplay = $("#employee-list").html();
-	//Compiling handlebars
-	var template = Handlebars.compile(employeeDisplay);
-	//Pass submitted data to template
-	var compiledHtml = template({employees: submission.getList()});
-	//Adding html to page
-	$(".employeeDisplay").append(compiledHtml);
+	//Employee constructor
+	
+	
 	});
 });
 

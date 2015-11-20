@@ -15,24 +15,29 @@
 		<input type = "text" placeholder = "First" name = "firstName" required></input>
 		<input type = "text" placeholder = "Last" name = "lastName" required></input>
 		<input type = "number" placeholder = "Employee #" name = "empNumber" required></input>
-		<input type = "text" placeholder = "Title" name = "Title" required></input>
+		<input type = "text" placeholder = "Title" name = "empTitle" required></input>
 		<input type = "number" min = "0" max = "5" size = "12em" placeholder = "Review Score"name = "reviewScore" reqired></input>
 		<input type = "number" placeholder = "Salary" name = "salary" required></input>
 		<input type = "submit" value ="Submit"></input>
 	</form>
 
 	<!--Display area for resulting employee object-->
-	<section class = "employeeDisplay`">
+	<section class = "employeeDisplay">
+	<h3>Employee info</h3>
 	<script id="employee-list" type="text/x-handlebars-template">
 		{{#each employees}}
 		<ul>{{firstName}}s Review</ul>
 		<li>Name: {{firstName}} {{lastName}}</li>
 		<li>Employee Number: {{empNumber}}</li>
+		<li>{{empTitle}}</li>
 		<li>Review Score: {{reviewScore}}</li>
 		<li>Salary: {{salary}}</li>
 		<button>Remove</button>
 		{{/each}}
 		</script>
+	</section>
+
+	<section class = "add">
 	</section>
 
 	<script src="https://code.jquery.com/jquery-2.1.4.js"></script>
